@@ -4,7 +4,6 @@ function solveEquation(a, b, c) {
   let arr;
   let discriminant = b ** 2 - 4 * a * c;
 
-
   if (discriminant < 0) {
     arr = [];
   } else if (discriminant === 0) {
@@ -12,7 +11,6 @@ function solveEquation(a, b, c) {
   } else {
     arr = [(-b + Math.sqrt(discriminant)) / (2 * a), (-b - Math.sqrt(discriminant)) / (2 * a)];
   }
-
 
   return arr; // array
 }
@@ -27,7 +25,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let contributionValue = parseInt(contribution);
   let amountValue = parseInt(amount);
 
-
   if (Number.isNaN(percentValue)) {
     return (`Параметр "Процентная ставка" содержит неправильное значение "${percent}"`);// контроль корректности введенных данных
   }
@@ -39,7 +36,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   }
 
   let creditBody = amountValue - contributionValue; // тело кредита(сумма к возврату)
-
 
   ///определяем кол-во мес (период)
   let Today = Date.now();
@@ -53,11 +49,9 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 
   creditPeriod(Today, endDate)
 
-
   let P = percentValue / 12 / 100;//процентная ставка расчет
   let sumMonth = creditBody * (P + (P / (((1 + P) ** diffirenceInMonth) - 1))); //Ежемесячная оплата 
   totalAmount = +(sumMonth * diffirenceInMonth).toFixed(2);//сумма, которую придется заплатить клиенту и округление до двух значений после запятой
-
 
 
   console.log(totalAmount);
