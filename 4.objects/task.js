@@ -12,34 +12,34 @@ Student.prototype.setSubject = function (subjectName) {//метод setSubject(s
   this.subject = subjectName;
 }
 
-Student.prototype.addMark = function(mark){ //при вызове будет добавлять студенту оценку mark в свойство (массив) marks объекта.
-if(this.marks === undefined){ // проверка свойства
-  this.marks = [mark];// добавить первую оценку 
+Student.prototype.addMark = function (mark) { //при вызове будет добавлять студенту оценку mark в свойство (массив) marks объекта.
+  if (this.marks === undefined) { // проверка свойства
+    this.marks = [mark];// добавить первую оценку 
   } else {
     this.marks.push(mark);// добавить вторую и последующие оценки в массив
   }
+}
+
+Student.prototype.addMarks = function (...marks) { //добавление нескольких оценок .
+  if (this.marks === undefined) {
+    this.marks = [...marks];
+  } else {
+    this.marks.push(...marks);
   }
+}
 
-  Student.prototype.addMarks = function(...marks){ //добавление нескольких оценок .
-    if(this.marks === undefined){ 
-       this.marks = [...marks];
-    } else {
-      this.marks.push(...marks);
-    }
-  }  
+Student.prototype.getAverage = function () {//метод getAverage() по аналогии с п.2, который при вызове будет возвращать среднее арифметическое оценок студента.
+  let sum = 0;
 
-  Student.prototype.getAverage = function(){//метод getAverage() по аналогии с п.2, который при вызове будет возвращать среднее арифметическое оценок студента.
-    let sum = 0;
-
-    for(let i = 0; i < this.marks.length; i++){
-     sum += this.marks[i];
-    }
+  for (let i = 0; i < this.marks.length; i++) {
+    sum += this.marks[i];
+  }
 
   return sum / this.marks.length;
-   }
+}
 
-   Student.prototype.exclude = function(reason) {// метод exclude(reason) по аналогии с п.2, который при вызове будет исключать студента из учебного процесса и устанавливать причину исключения.
-    delete this.subjectName;
-    delete this.marks;
-    this.excluded = reason;
-  }
+Student.prototype.exclude = function (reason) {// метод exclude(reason) по аналогии с п.2, который при вызове будет исключать студента из учебного процесса и устанавливать причину исключения.
+  delete this.subject;
+  delete this.marks;
+  this.excluded = reason;
+}
