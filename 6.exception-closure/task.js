@@ -8,3 +8,13 @@ function parseCount(value) {
 
     return number;//результат парсинга из функции.
 }
+
+function validateCount(value) {
+    try {
+        return parseCount(value);
+    } catch (err) {
+        return err;//ошибку из функции в случае перехвата исключения
+    }
+}
+
+//з2
