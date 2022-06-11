@@ -47,14 +47,14 @@ class NovelBook extends Book {//Создайте классы NovelBook для �
     }
 }
 
-class FantasticBook extends Book {//Создайте классы NovelBook для романов
+class FantasticBook extends Book {//Создайте классы FantasticBook
     constructor(author, name, releaseDate, pagesCount, state) {
         super(author, name, releaseDate, pagesCount, state);
         this.type = 'fantastic';
     }
 }
 
-class DetectiveBook extends Book {//Создайте классы NovelBook для романов
+class DetectiveBook extends Book {//Создайте классы DetectiveBook
     constructor(author, name, releaseDate, pagesCount, state) {
         super(author, name, releaseDate, pagesCount, state);
         this.type = 'detective';
