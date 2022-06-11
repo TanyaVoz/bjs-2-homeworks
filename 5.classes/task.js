@@ -60,3 +60,41 @@ class DetectiveBook extends Book {//Создайте классы NovelBook дл
         this.type = 'detective';
     }
 }
+
+
+//з2
+
+class Library {
+    constructor(name) {//Конструктор класса должен принимать название библиотеки name (строка). Значением свойства books должен быть пустой массив.
+        this.name = name;
+        this.books = [];
+    }
+
+    addBook(book) {//Реализуйте метод addBook(book), который будет в качестве аргумента принимать объект (книгу или журнал) и добавлять книгу в хранилище books, только если состояние state книги больше 30
+        if (book.state > 30) {
+            this.books.push(book);
+        }
+    }
+
+    findBookBy(type, value) {//поиск книги
+        let keybooks = this.books.find(item => value === item[type]);
+        if (keybooks) {
+            return keybooks;
+        } else {
+            return null;
+        }
+    }
+    giveBookByName(bookName) {
+        let indexBook = this.books.findIndex((item) => item.name === bookName);
+        if (indexBook != -1) {
+            return this.books.splice(indexBook, 1)[0];//удаление книги из хранилища
+        } else {
+            return null;
+        }
+    }
+
+}
+
+
+//з3
+
