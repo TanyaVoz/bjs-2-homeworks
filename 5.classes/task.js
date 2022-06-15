@@ -97,4 +97,48 @@ class Library {
 
 
 //з3
+class Student {
+    constructor(name) {
+        this.name = name;
+        this.marks = [];
+    }
 
+    addMark(mark, subject) {
+        if (!(subject in this.marks)) {
+            this.marks[subject] = [];
+        }
+
+        if (mark <= 5) {
+            this.marks[subject].push(mark);
+        } else {
+            return "Ошибка, оценка должна быть числом от 1 до 5";
+        }
+    }
+
+    getAverageBySubject(subject) {
+        for (let key in this.marks) {
+            if (key === subject) {
+                return (this.marks[subject].reduce((sum, current) => sum + current, 0)) / this.marks[subject].length;
+            }
+        }
+        return "Несуществующий предмет";
+    }
+
+
+    getAverage() {
+        let sum = 0;
+        let sumlengths = 0;
+        for (let key in this.marks) {
+            sum += this.marks[key].reduce((sum, current) => sum + current, 0)
+            sumlengths += this.marks[key].length;
+        }
+        return sum / sumlengths;
+
+    }
+
+    exclude(deleteStudent) {
+        if (deleteStudent === "Исключен за попытку подделать оценки") {
+            for (let student in this) delete this[student];
+        }
+    }
+}
