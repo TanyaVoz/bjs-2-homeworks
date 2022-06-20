@@ -30,7 +30,7 @@ function cachingDecoratorNew(func) {
 //2
 
 function debounceDecoratorNew(func, ms) {
-  let Debounce = false;
+  let debounce = false;
   let timeout;
 
   return function (...args) {
@@ -40,9 +40,9 @@ function debounceDecoratorNew(func, ms) {
       func(...args);
     }, ms);
 
-    if (!Debounce) {
+    if (!debounce) {
       func(...args);
-      Debounce = true;
+      debounce = true;
     }
   }
 }
