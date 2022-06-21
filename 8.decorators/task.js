@@ -48,14 +48,26 @@ function debounceDecoratorNew(func, ms) {
 }
 
 //3
+function debounceDecorator2(func, ms) {
+  let debounce = false;
+  let timeout;
 
-function debounceDecorator2(debounceDecoratorNew) {
+  function wrapper(...args) {
+    wrapper.count++;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func(...args);
+    }, ms);
+
+    if (!debounce) {
+      func(...args);
+      debounce = true;
+    }
+  }
+
   wrapper.count = 0;
 
-  function wrapper(...rest) {
-    wrapper.count++;
-    return debounceDecoratorNew.call(this, ...rest);
-  }
-  return wrapper;
+  return wrapper
+
 }
 
